@@ -396,7 +396,7 @@ class Tab(object):
     
     @inmain_decorator(True)
     def _update_error_and_tab_icon(self):
-        """Udate and show the error message for the tab, and update the icon
+        """Update and show the error message for the tab, and update the icon
         and text colour on the tab"""
         prefix = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">\n<html><head><meta name="qrichtext" content="1" /><style type="text/css">\np, li { white-space: pre-wrap; }\n</style></head><body style=" font-family:"MS Shell Dlg 2"; font-size:7.8pt; font-weight:400; font-style:normal;">'
         suffix = '</body></html>'
