@@ -12,14 +12,21 @@
 #####################################################################
 import logging
 import os
-
 from qtutils import *
-
 from blacs.plugins import PLUGINS_DIR
 
 name = "GUI Theme"
 module = "theme" # should be folder name
 logger = logging.getLogger('BLACS.plugin.%s'%module)
+
+def load_theme(theme_name):
+    theme_path = os.path.join(PLUGINS_DIR, module, "themes", f"{theme_name}_theme.qss")
+    try:
+        with open(theme_path, "r") as f:
+            return f.read()
+    except Exception as e:
+        logger.warning(f"Could not load theme '{theme_name}': {e}")
+        return ""
 
 
 DEFAULT_STYLESHEET = """DigitalOutput {
@@ -99,6 +106,252 @@ InvertedDigitalOutput:checked:disabled{
 }
  """
 
+# DARK_STYLESHEET = """
+# # /* ===== Global & Widget Defaults ===== */
+# # QWidget {
+# #     background-color: #0f1115;
+# #     color: #e6eef3;
+# #     selection-background-color: #2b6ea3;
+# #     selection-color: #ffffff;
+# #     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+# # }
+
+# # /* ===== Push Buttons ===== */
+# # QPushButton {
+# #     background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+# #                                       stop:0 #2a2e34, stop:1 #212427);
+# #     border: 1px solid #2e3338;
+# #     padding: 6px 10px;
+# #     border-radius: 6px;
+# #     color: #e6eef3;
+# # }
+# # QPushButton:hover { border-color: #3a7bd5; }
+# # QPushButton:pressed { background-color: #1b1d20; }
+
+# # /* ===== LineEdits, TextEdits ===== */
+# # QLineEdit, QPlainTextEdit, QTextEdit {
+# #     background-color: #0c0d0f;
+# #     border: 1px solid #26282c;
+# #     padding: 6px;
+# #     border-radius: 4px;
+# #     color: #e6eef3;
+# # }
+# # QLineEdit:focus, QTextEdit:focus { border-color: #3a7bd5; }
+
+# # /* ===== Tables, Headers ===== */
+# # QHeaderView::section {
+# #     background-color: #131417;
+# #     color: #cfd8de;
+# #     padding: 6px;
+# #     border: 1px solid #232427;
+# # }
+# # QTableView, QTreeView, QListView {
+# #     background-color: #0b0c0e;
+# #     gridline-color: #17181b;
+# #     alternate-background-color: #0f1013;
+# # }
+# # QTableView::item:selected, QTreeView::item:selected, QListView::item:selected {
+# #     background-color: #2b6ea3;
+# #     color: #fff;
+# # }
+
+# # /* ===== Combo & Spin Boxes ===== */
+# # QComboBox, QSpinBox, QDoubleSpinBox {
+# #     background-color: #0c0d0f;
+# #     border: 1px solid #26282c;
+# #     padding: 4px;
+# #     color: #e6eef3;
+# # }
+
+# # /* ===== Checkboxes / Radios ===== */
+# # QCheckBox, QRadioButton { spacing: 6px; }
+# # QCheckBox::indicator, QRadioButton::indicator {
+# #     background-color: transparent;
+# #     border: 1px solid #3a3d42;
+# # }
+
+# # /* ===== Progress Bar ===== */
+# # QProgressBar {
+# #     border: 1px solid #2b2f34;
+# #     background: #0c0d0f;
+# #     text-align: center;
+# #     border-radius: 6px;
+# # }
+# # QProgressBar::chunk {
+# #     background-color: #3a7bd5;
+# #     border-radius: 6px;
+# # }
+
+# # /* ===== Tabs ===== */
+# # QTabWidget::pane { border: 1px solid #232427; }
+# # QTabBar::tab {
+# #     background: #0f1115;
+# #     color: #cfd8de;
+# #     padding: 8px;
+# #     border: 1px solid #232427;
+# #     border-bottom: none;
+# #     border-top-left-radius: 6px;
+# #     border-top-right-radius: 6px;
+# # }
+# # QTabBar::tab:selected { background: #16181c; }
+
+# # /* ===== Dock Widgets ===== */
+# # QDockWidget { titlebar-close-icon: url(:/icons/close.png); title: " "; }
+# # QDockWidget::title { background: #101215; }
+
+# # /* ===== Menus & Tooltips ===== */
+# # QMenuBar, QMenu {
+# #     background-color: #0f1115;
+# #     color: #e6eef3;
+# # }
+# # QMenu::item:selected { background-color: #2b6ea3; color: #fff; }
+# # QToolTip {
+# #     background-color: #1c1f22;
+# #     color: #e6eef3;
+# #     border: 1px solid #3a3f45;
+# #     padding: 6px;
+# # }
+
+# # /* ===== Scrollbars & Splitters ===== */
+# # QScrollBar:vertical {
+# #     background: #0f1115;
+# #     width: 12px;
+# # }
+# # QScrollBar::handle:vertical {
+# #     background: #2b2e33;
+# #     min-height: 20px;
+# #     border-radius: 6px;
+# # }
+# # QScrollBar::add-line, QScrollBar::sub-line { height: 0px; }
+# # QSplitter::handle { background: #151618; }
+
+# # /* ===== Status Bar ===== */
+# # QStatusBar { background: #0f1115; color: #cfd8de; }
+
+# # """
+
+# BLUE_STYLESHEET = """
+# /* ===== Global & Widget Defaults ===== */
+# QWidget {
+#     background-color: #0a0f1a;
+#     color: #e1e8f0;
+#     selection-background-color: #1e4a72;
+#     selection-color: #ffffff;
+#     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+# }
+
+# /* ===== Push Buttons ===== */
+# QPushButton {
+#     background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+#                                       stop:0 #1a2332, stop:1 #0f1520);
+#     border: 1px solid #1e2b3d;
+#     padding: 6px 10px;
+#     border-radius: 6px;
+#     color: #e1e8f0;
+# }
+# QPushButton:hover { border-color: #2563eb; }
+# QPushButton:pressed { background-color: #0d1117; }
+
+# /* ===== LineEdits, TextEdits ===== */
+# QLineEdit, QPlainTextEdit, QTextEdit {
+#     background-color: #070b14;
+#     border: 1px solid #1a2332;
+#     padding: 6px;
+#     border-radius: 4px;
+#     color: #e1e8f0;
+# }
+# QLineEdit:focus, QTextEdit:focus { border-color: #2563eb; }
+
+# /* ===== Tables, Headers ===== */
+# QHeaderView::section {
+#     background-color: #0d1421;
+#     color: #b8c5d6;
+#     padding: 6px;
+#     border: 1px solid #1a2332;
+# }
+# QTableView, QTreeView, QListView {
+#     background-color: #060a12;
+#     gridline-color: #0f1520;
+#     alternate-background-color: #080d17;
+# }
+# QTableView::item:selected, QTreeView::item:selected, QListView::item:selected {
+#     background-color: #1e4a72;
+#     color: #fff;
+# }
+
+# /* ===== Combo & Spin Boxes ===== */
+# QComboBox, QSpinBox, QDoubleSpinBox {
+#     background-color: #070b14;
+#     border: 1px solid #1a2332;
+#     padding: 4px;
+#     color: #e1e8f0;
+# }
+
+# /* ===== Checkboxes / Radios ===== */
+# QCheckBox, QRadioButton { spacing: 6px; }
+# QCheckBox::indicator, QRadioButton::indicator {
+#     background-color: transparent;
+#     border: 1px solid #2c3e50;
+# }
+
+# /* ===== Progress Bar ===== */
+# QProgressBar {
+#     border: 1px solid #1a2332;
+#     background: #070b14;
+#     text-align: center;
+#     border-radius: 6px;
+# }
+# QProgressBar::chunk {
+#     background-color: #2563eb;
+#     border-radius: 6px;
+# }
+
+# /* ===== Tabs ===== */
+# QTabWidget::pane { border: 1px solid #1a2332; }
+# QTabBar::tab {
+#     background: #0a0f1a;
+#     color: #b8c5d6;
+#     padding: 8px;
+#     border: 1px solid #1a2332;
+#     border-bottom: none;
+#     border-top-left-radius: 6px;
+#     border-top-right-radius: 6px;
+# }
+# QTabBar::tab:selected { background: #0f1520; }
+
+# /* ===== Dock Widgets ===== */
+# QDockWidget { titlebar-close-icon: url(:/icons/close.png); title: " "; }
+# QDockWidget::title { background: #0a0f1a; }
+
+# /* ===== Menus & Tooltips ===== */
+# QMenuBar, QMenu {
+#     background-color: #0a0f1a;
+#     color: #e1e8f0;
+# }
+# QMenu::item:selected { background-color: #1e4a72; color: #fff; }
+# QToolTip {
+#     background-color: #0f1520;
+#     color: #e1e8f0;
+#     border: 1px solid #2c3e50;
+#     padding: 6px;
+# }
+
+# /* ===== Scrollbars & Splitters ===== */
+# QScrollBar:vertical {
+#     background: #0a0f1a;
+#     width: 12px;
+# }
+# QScrollBar::handle:vertical {
+#     background: #1a2332;
+#     min-height: 20px;
+#     border-radius: 6px;
+# }
+# QScrollBar::add-line, QScrollBar::sub-line { height: 0px; }
+# QSplitter::handle { background: #0f1520; }
+
+# /* ===== Status Bar ===== */
+# QStatusBar { background: #0a0f1a; color: #b8c5d6; }
+# """
 
 def is_default_stylesheet(stylesheet):
     """Return whether a stylesheet is the same as the default stylesheet, modulo whitespace"""
@@ -157,31 +410,49 @@ class Plugin(object):
 class Setting(object):
     name = name
 
-    def __init__(self,data):
-        # This is our data store!
+    def __init__(self, data):
         self.data = data
-        
         if 'stylesheet' not in self.data or not self.data['stylesheet']:
-            # If it's absent or an empty string, use the default stylesheet:
-            self.data['stylesheet'] = DEFAULT_STYLESHEET
-    
+            self.data['stylesheet'] = load_theme('default') or DEFAULT_STYLESHEET
+
+    def on_set_default_theme(self):
+        self.widgets['stylesheet'].setPlainText(load_theme('default'))
+        
     def on_set_green_button_theme(self):
-        self.widgets['stylesheet'].appendPlainText(DEFAULT_STYLESHEET)
-        
-    # Create the page, return the page and an icon to use on the label (the class name attribute will be used for the label text)   
-    def create_dialog(self,notebook):
+        self.widgets['stylesheet'].setPlainText(DEFAULT_STYLESHEET)
+
+    def create_dialog(self, notebook):
         ui = UiLoader().load(os.path.join(PLUGINS_DIR, module, 'theme.ui'))
-        
         # restore current stylesheet
         ui.stylesheet_text.setPlainText(self.data['stylesheet'])
+        # Populate theme_combo with available .qss files
+        theme_dir = os.path.join(PLUGINS_DIR, module, 'themes')
+        themes = [f for f in os.listdir(theme_dir) if f.endswith('.qss')]
+        theme_names = [os.path.splitext(f)[0].replace('_theme','') for f in themes]
+        ui.theme_combo.clear()
+        ui.theme_combo.addItems(theme_names)
+        # Select current theme if possible
+        current_theme = None
+        for name in theme_names:
+            if load_theme(name) == self.data['stylesheet']:
+                current_theme = name
+                break
+        if current_theme:
+            idx = theme_names.index(current_theme)
+            ui.theme_combo.setCurrentIndex(idx)
+        # Handler for theme selection
+        def on_theme_selected(idx):
+            theme_name = theme_names[idx]
+            ui.stylesheet_text.setPlainText(load_theme(theme_name))
+        ui.theme_combo.currentIndexChanged.connect(on_theme_selected)
         ui.example_button.clicked.connect(self.on_set_green_button_theme)
         
         # save reference to widget
         self.widgets = {}
         self.widgets['stylesheet'] = ui.stylesheet_text
         self.widgets['example_button'] = ui.example_button
-        
-        return ui,None
+        self.widgets['theme_combo'] = ui.theme_combo
+        return ui, None
     
     def get_value(self,name):
         if name in self.data:
@@ -206,5 +477,3 @@ class Setting(object):
         
     def close(self):
         self.widgets['example_button'].clicked.disconnect(self.on_set_green_button_theme)
-        
-    

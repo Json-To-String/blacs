@@ -1,0 +1,120 @@
+/* ===== Global & Widget Defaults ===== */
+QWidget {
+    background-color: #0a0f1a;
+    color: #e1e8f0;
+    selection-background-color: #1e4a72;
+    selection-color: #ffffff;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ===== Push Buttons ===== */
+QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #1a2332, stop:1 #0f1520);
+    border: 1px solid #1e2b3d;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: #e1e8f0;
+}
+QPushButton:hover { border-color: #2563eb; }
+QPushButton:pressed { background-color: #0d1117; }
+
+/* ===== LineEdits, TextEdits ===== */
+QLineEdit, QPlainTextEdit, QTextEdit {
+    background-color: #070b14;
+    border: 1px solid #1a2332;
+    padding: 6px;
+    border-radius: 4px;
+    color: #e1e8f0;
+}
+QLineEdit:focus, QTextEdit:focus { border-color: #2563eb; }
+
+/* ===== Tables, Headers ===== */
+QHeaderView::section {
+    background-color: #0d1421;
+    color: #b8c5d6;
+    padding: 6px;
+    border: 1px solid #1a2332;
+}
+QTableView, QTreeView, QListView {
+    background-color: #060a12;
+    gridline-color: #0f1520;
+    alternate-background-color: #080d17;
+}
+QTableView::item:selected, QTreeView::item:selected, QListView::item:selected {
+    background-color: #1e4a72;
+    color: #fff;
+}
+
+/* ===== Combo & Spin Boxes ===== */
+QComboBox, QSpinBox, QDoubleSpinBox {
+    background-color: #070b14;
+    border: 1px solid #1a2332;
+    padding: 4px;
+    color: #e1e8f0;
+}
+
+/* ===== Checkboxes / Radios ===== */
+QCheckBox, QRadioButton { spacing: 6px; }
+QCheckBox::indicator, QRadioButton::indicator {
+    background-color: transparent;
+    border: 1px solid #2c3e50;
+}
+
+/* ===== Progress Bar ===== */
+QProgressBar {
+    border: 1px solid #1a2332;
+    background: #070b14;
+    text-align: center;
+    border-radius: 6px;
+}
+QProgressBar::chunk {
+    background-color: #2563eb;
+    border-radius: 6px;
+}
+
+/* ===== Tabs ===== */
+QTabWidget::pane { border: 1px solid #1a2332; }
+QTabBar::tab {
+    background: #0a0f1a;
+    color: #b8c5d6;
+    padding: 8px;
+    border: 1px solid #1a2332;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+QTabBar::tab:selected { background: #0f1520; }
+
+/* ===== Dock Widgets ===== */
+QDockWidget { titlebar-close-icon: url(:/icons/close.png); title: " "; }
+QDockWidget::title { background: #0a0f1a; }
+
+/* ===== Menus & Tooltips ===== */
+QMenuBar, QMenu {
+    background-color: #0a0f1a;
+    color: #e1e8f0;
+}
+QMenu::item:selected { background-color: #1e4a72; color: #fff; }
+QToolTip {
+    background-color: #0f1520;
+    color: #e1e8f0;
+    border: 1px solid #2c3e50;
+    padding: 6px;
+}
+
+/* ===== Scrollbars & Splitters ===== */
+QScrollBar:vertical {
+    background: #0a0f1a;
+    width: 12px;
+}
+QScrollBar::handle:vertical {
+    background: #1a2332;
+    min-height: 20px;
+    border-radius: 6px;
+}
+QScrollBar::add-line, QScrollBar::sub-line { height: 0px; }
+QSplitter::handle { background: #0f1520; }
+
+/* ===== Status Bar ===== */
+QStatusBar { background: #0a0f1a; color: #b8c5d6; }
