@@ -17,7 +17,11 @@ QPushButton {
     color: #e1e8f0;
 }
 QPushButton:hover { border-color: #2563eb; }
-QPushButton:pressed { background-color: #0d1117; }
+QPushButton:pressed { background-color: #e1e8f0; }
+QPushButton:checked {
+    color: #e1e8f0;
+    background-color: #0d1117;
+}
 
 /* ===== LineEdits, TextEdits ===== */
 QLineEdit, QPlainTextEdit, QTextEdit {

@@ -17,7 +17,14 @@ QPushButton {
     color: #e6eef3;
 }
 QPushButton:hover { border-color: #3a7bd5; }
-QPushButton:pressed { background-color: #1b1d20; }
+QPushButton:pressed { 
+    color: #3a7bd5;
+    background-color: #a5bddeff; 
+}
+QPushButton:checked { 
+    color: #3a7bd5;
+    background-color: #a5bddeff; 
+}
 
 /* ===== LineEdits, TextEdits ===== */
 QLineEdit, QPlainTextEdit, QTextEdit {
@@ -95,7 +102,7 @@ QMenuBar, QMenu {
     background-color: #0f1115;
     color: #e6eef3;
 }
-QMenu::item:selected { background-color: #2b6ea3; color: #fff; }
+QMenu::item:selected { background-color: #323232ff; color: #fff; }
 QToolTip {
     background-color: #1c1f22;
     color: #e6eef3;
