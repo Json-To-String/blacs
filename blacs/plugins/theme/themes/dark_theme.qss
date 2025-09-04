@@ -22,8 +22,8 @@ QPushButton:pressed {
     background-color: #a5bddeff; 
 }
 QPushButton:checked { 
-    color: #3a7bd5;
-    background-color: #a5bddeff; 
+    color: #0f1115;
+    background-color: #e6eef3; 
 }
 
 /* ===== LineEdits, TextEdits ===== */
