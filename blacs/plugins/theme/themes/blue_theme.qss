@@ -1,8 +1,8 @@
 /* ===== Global & Widget Defaults ===== */
 QWidget {
-    background-color: #0a1224;        /* deep navy */
-    color: #dce7f7;                   /* light bluish text */
-    selection-background-color: #3b82f6; /* vibrant blue */
+    background-color: #0a1224;
+    color: #dce7f7;
+    selection-background-color: #3b82f6;
     selection-color: #ffffff;
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
@@ -17,7 +17,10 @@ QPushButton {
     color: #dce7f7;
 }
 QPushButton:hover { border-color: #3b82f6; }
-QPushButton:pressed { background-color: #2563eb; color: #fff; }
+QPushButton:pressed { 
+    background-color: #2563eb;
+    color: #fff; 
+}
 QPushButton:checked {
     color: #dce7f7;
     background-color: #2563eb;
